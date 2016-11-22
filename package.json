@@ -1,0 +1,16 @@
+{
+  "name": "cjk_rn",
+  "version": "1.0.0",
+  "description": "cjk_rn",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output app/src/main/assets/index.android.bundle --sourcemap-output app/src/main/assets/index.android.map --assets-dest android/app/src/main/res/"
+  },
+  "author": "xqf",
+  "license": "ISC",
+  "dependencies": {
+    "react":"^15.3.2",
+    "react-native":"^0.37.0"
+  }
+}
