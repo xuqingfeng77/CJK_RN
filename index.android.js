@@ -5,9 +5,11 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
-
+import SignUpPage from './js_modules/page/SignUpPage';
+//import JsAndroid from './JsAndroid';
 class HelloWorld extends React.Component {
   render() {
     return (
@@ -18,12 +20,17 @@ class HelloWorld extends React.Component {
   }
 }
 class HelloWorld2 extends React.Component {
+ constructor(props){
+    super(props);
+    //console.log(NativeActivity);
+  }
+// _newNativeActivity(){
+//    JsAndroid.jsActivity();
+//  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.hello}>不得了 要火了</Text>
-      </View>
-    )
+          <SignUpPage/>
+            );
   }
 }
 

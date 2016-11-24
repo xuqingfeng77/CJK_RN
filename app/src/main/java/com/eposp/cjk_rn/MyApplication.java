@@ -2,6 +2,7 @@ package com.eposp.cjk_rn;
 
 import android.app.Application;
 
+import com.antfortune.freeline.FreelineCore;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -32,5 +33,11 @@ public class MyApplication extends Application implements ReactApplication {
     @Override
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        FreelineCore.init(this);
     }
 }
