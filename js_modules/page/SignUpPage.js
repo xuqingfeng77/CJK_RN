@@ -5,9 +5,12 @@
 
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, PixelRatio, Platform, TouchableOpacity, Image, TextInput, BackAndroid} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import ImageButton from '../component/ImageButtonWithText';
 import Button from '../component/Button';
 import px2dp from '../util/px2dp';
+import Toast2Android from '../config/Toast2Android';
+
 
 export default class SignUpPage extends Component {
     constructor(props){
@@ -17,6 +20,7 @@ export default class SignUpPage extends Component {
 
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
+
     }
 
     componentWillUnmount() {
@@ -33,6 +37,8 @@ export default class SignUpPage extends Component {
     }
 
     _signupCallback(){
+        Toast2Android.show('点击了注册按钮', Toast2Android.SHORT);
+        console.log("You tapped the button!");
 
     }
 
@@ -53,7 +59,7 @@ export default class SignUpPage extends Component {
                         <TextInput
                             style={styles.edit}
                             underlineColorAndroid="transparent"
-                            placeholder="邮箱/手机号"
+                            placeholder="手机号"
                             placeholderTextColor="#c4c4c4"/>
                     </View>
                     <View style={{height: 1/PixelRatio.get(), backgroundColor:'#c4c4c4'}}/>
@@ -84,7 +90,7 @@ export default class SignUpPage extends Component {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
-        backgroundColor: 'rgb(22,131,251)'
+        backgroundColor: 'rgb(208, 218, 227)'
     },
     actionBar:{
         marginTop: (Platform.OS === 'ios') ? px2dp(10) : 0,
@@ -105,6 +111,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopLeftRadius: 3,
         borderTopRightRadius: 3
+
     },
     editView2:{
         height: px2dp(48),

@@ -2,8 +2,8 @@ package com.eposp.cjk_rn;
 
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
+import com.eposp.module.JsReactPackage;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;

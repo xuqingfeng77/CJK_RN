@@ -8,7 +8,8 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import SignUpPage from './js_modules/page/SignUpPage';
+import SignInPage from './js_modules/page/SignInPage';
+//import Navi from './js_modules/page/Navi';
 //import JsAndroid from './JsAndroid';
 class HelloWorld extends React.Component {
   render() {
@@ -29,7 +30,7 @@ class HelloWorld2 extends React.Component {
 //  }
   render() {
     return (
-          <SignUpPage/>
+          <SignInPage/>
             );
   }
 }
