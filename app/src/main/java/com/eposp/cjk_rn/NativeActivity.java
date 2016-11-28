@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class NativeActivity extends AppCompatActivity {
 

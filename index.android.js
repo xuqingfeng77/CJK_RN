@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import SignInPage from './js_modules/page/SignInPage';
+//import SimpleNavigationApp from './js_modules/page/SimpleNavigationApp';
 //import Navi from './js_modules/page/Navi';
 //import JsAndroid from './JsAndroid';
 class HelloWorld extends React.Component {
