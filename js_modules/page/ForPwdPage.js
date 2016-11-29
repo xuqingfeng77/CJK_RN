@@ -4,72 +4,32 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, PixelRatio, Platform, TouchableOpacity, Image, TextInput, BackAndroid,Navigator} from 'react-native';
+import {Text, View, StyleSheet, PixelRatio, Platform, TouchableOpacity, Image, TextInput, BackAndroid} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ImageButton from '../component/ImageButtonWithText';
 import Button from '../component/Button';
 import px2dp from '../util/px2dp';
 import Toast2Android from '../config/Toast2Android';
-import SignUpPage from './SignUpPage';
-import ForPwdPage from './ForPwdPage';
+import theme from '../config/theme';
+import NavigationBar from '../component/SimpleNavigationBar';
+import PageComponent from './BackPageComponent';
 
-
-export default class SignInPage extends Component {
+export default class ForPwdPage extends PageComponent {
     constructor(props){
         super(props);
         this.handleBack = this._handleBack.bind(this);
     }
 
-    componentDidMount() {
-        BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
+    _signupCallback(){
+        Toast2Android.show('点击了注册按钮', Toast2Android.SHORT);
+        console.log("You tapped the button!");
 
     }
-
-    componentWillUnmount() {
-        BackAndroid.removeEventListener('hardwareBackPress', this.handleBack);
-    }
-
-    _handleBack() {
-        const navigator = this.props.navigator;
-        if (navigator && navigator.getCurrentRoutes().length > 1) {
-            navigator.pop()
-            return true;
-        }
-        return false;
-    }
-
-    _signInCallback(){
-     console.log("You tapped the login button!");
-         this.props.navigator.push({
-                   component: SignUpPage
-               });
-    }
-    _forgPwdIntent(){
-         this.props.navigator.push(
-          {
-                   component:ForPwdPage
-          });
-    }
-
 
     render(){
         return(
             <View style={styles.view}>
-                <View style={styles.actionBar}>
-                    <ImageButton
-                        onPress={this._handleBack.bind(this)}
-                        icon="md-arrow-back"
-                        color="white"
-                        imgSize={px2dp(25)}
-                        btnStyle={{width: px2dp(55), height: px2dp(60)}}
-                    />
-                </View>
-                 <View   style={{alignItems:'center'}}>
-                     <Image
-                         style={styles.imageViewLogo}
-                        source={require('../image/hot.png')}
-                     />
-                </View>
+               <NavigationBar title="忘记密码" backOnPress={this._handleBack.bind(this)}/>
                 <View style={styles.editGroup}>
                     <View style={styles.editView1}>
                         <TextInput
@@ -78,7 +38,14 @@ export default class SignInPage extends Component {
                             placeholder="手机号"
                             placeholderTextColor="#c4c4c4"/>
                     </View>
-
+                    <View style={{height: 1/PixelRatio.get(), backgroundColor:'#c4c4c4'}}/>
+                    <View style={styles.editView2}>
+                        <TextInput
+                            style={styles.edit}
+                            underlineColorAndroid="transparent"
+                            placeholder="用户名"
+                            placeholderTextColor="#c4c4c4"/>
+                    </View>
                     <View style={{height: 1/PixelRatio.get(), backgroundColor:'#c4c4c4'}}/>
                     <View style={styles.editView3}>
                         <TextInput
@@ -88,14 +55,8 @@ export default class SignInPage extends Component {
                             placeholderTextColor="#c4c4c4"/>
                     </View>
                     <View style={{marginTop: px2dp(15)}}>
-                        <Button text="登录" onPress={this._signInCallback.bind(this)}/>
+                        <Button text="确认" onPress={this._signupCallback.bind(this)}/>
                     </View>
-                </View>
-                <View style={styles.textRegForgView}>
-                     <Text style={styles.textRegForgStyle } onPress={this._forgPwdIntent.bind(this)}
-                     >忘记密码？</Text>
-                     <Text style={styles.textRegForgStyle} onPress={this._signInCallback.bind(this)}
-                     >注册</Text>
                 </View>
             </View>
         );
@@ -110,13 +71,7 @@ const styles = StyleSheet.create({
     actionBar:{
         marginTop: (Platform.OS === 'ios') ? px2dp(10) : 0,
     },
-    imageViewLogo:{
-        flex:1,
-        justifyContent:"center"
-
-    },
     editGroup:{
-        marginTop: px2dp(30),
         padding: px2dp(20)
     },
     edit:{
@@ -145,13 +100,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderBottomLeftRadius: 3,
         borderBottomRightRadius: 3
-    },
-    textRegForgView:{
-    marginTop:px2dp(20),
-    },
-    textRegForgStyle:{
-
-        color:'blue',
-        fontSize:15
     },
 });

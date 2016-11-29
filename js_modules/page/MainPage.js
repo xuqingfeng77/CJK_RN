@@ -14,7 +14,7 @@ import SignUpPage from './SignUpPage';
 import ForPwdPage from './ForPwdPage';
 
 
-export default class SignInPage extends Component {
+export default class MainPage extends Component {
     constructor(props){
         super(props);
         this.handleBack = this._handleBack.bind(this);
@@ -38,6 +38,11 @@ export default class SignInPage extends Component {
         return false;
     }
 
+    _mainPageIntent(){
+              this.props.navigator.push(
+              component:MainPage
+              );
+    }
     _signInCallback(){
      console.log("You tapped the login button!");
          this.props.navigator.push({
@@ -64,39 +69,7 @@ export default class SignInPage extends Component {
                         btnStyle={{width: px2dp(55), height: px2dp(60)}}
                     />
                 </View>
-                 <View   style={{alignItems:'center'}}>
-                     <Image
-                         style={styles.imageViewLogo}
-                        source={require('../image/hot.png')}
-                     />
-                </View>
-                <View style={styles.editGroup}>
-                    <View style={styles.editView1}>
-                        <TextInput
-                            style={styles.edit}
-                            underlineColorAndroid="transparent"
-                            placeholder="手机号"
-                            placeholderTextColor="#c4c4c4"/>
-                    </View>
 
-                    <View style={{height: 1/PixelRatio.get(), backgroundColor:'#c4c4c4'}}/>
-                    <View style={styles.editView3}>
-                        <TextInput
-                            style={styles.edit}
-                            underlineColorAndroid="transparent"
-                            placeholder="密码"
-                            placeholderTextColor="#c4c4c4"/>
-                    </View>
-                    <View style={{marginTop: px2dp(15)}}>
-                        <Button text="登录" onPress={this._signInCallback.bind(this)}/>
-                    </View>
-                </View>
-                <View style={styles.textRegForgView}>
-                     <Text style={styles.textRegForgStyle } onPress={this._forgPwdIntent.bind(this)}
-                     >忘记密码？</Text>
-                     <Text style={styles.textRegForgStyle} onPress={this._signInCallback.bind(this)}
-                     >注册</Text>
-                </View>
             </View>
         );
     }

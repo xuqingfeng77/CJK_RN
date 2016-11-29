@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {
+import {Navigator,
   AppRegistry,
   StyleSheet,
   Text,
@@ -15,10 +15,18 @@ import SignInPage from './js_modules/page/SignInPage';
 class HelloWorld extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.hello}>Hello, World xqf coming here  dd </Text>
-      </View>
-    )
+    /*加入导航器功能*/
+    <Navigator
+                initialRoute={{component: SignInPage}}
+                configureScene={() => {
+                                    return Navigator.SceneConfigs.PushFromRight;
+                                }}
+                renderScene={(route, navigator) => {
+                    return <route.component navigator={navigator} {...route.args}/>
+                    }
+                }/>
+            );
+
   }
 }
 class HelloWorld2 extends React.Component {
@@ -48,4 +56,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('HelloWorld', () => HelloWorld2);
+AppRegistry.registerComponent('HelloWorld', () => HelloWorld);

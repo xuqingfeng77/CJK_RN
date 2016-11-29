@@ -63,7 +63,7 @@ export default class ImageButton extends Component{
                 return (
                     <TouchableNativeFeedback onPress={onPress}>
                         <View style={[styles.view, btnStyle]}>
-                            <Image source={image} style={{width: imgSize, height: imgSize}}/>
+                            <Image source={require('../image/lib_titlebar_back_normal.png')} style={{width: imgSize, height: imgSize}}/>
                             {text ?
                                 <Text style={[styles.text, {fontSize: fontSize, color: color}]}>{text}</Text>
                                 :
