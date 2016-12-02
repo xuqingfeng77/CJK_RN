@@ -12,6 +12,8 @@ import px2dp from '../util/px2dp';
 import Toast2Android from '../config/Toast2Android';
 import SignUpPage from './SignUpPage';
 import ForPwdPage from './ForPwdPage';
+import MainPage from './MainPage';
+import theme from '../config/theme';
 
 
 export default class SignInPage extends Component {
@@ -41,7 +43,7 @@ export default class SignInPage extends Component {
     _signInCallback(){
      console.log("You tapped the login button!");
          this.props.navigator.push({
-                   component: SignUpPage
+                   component: MainPage
                });
     }
     _forgPwdIntent(){
@@ -50,7 +52,12 @@ export default class SignInPage extends Component {
                    component:ForPwdPage
           });
     }
-
+    _signUpCallback(){
+     console.log("You tapped the login button!");
+         this.props.navigator.push({
+                   component: SignUpPage
+               });
+    }
 
     render(){
         return(
@@ -93,9 +100,9 @@ export default class SignInPage extends Component {
                 </View>
                 <View style={styles.textRegForgView}>
                      <Text style={styles.textRegForgStyle } onPress={this._forgPwdIntent.bind(this)}
-                     >忘记密码？</Text>
-                     <Text style={styles.textRegForgStyle} onPress={this._signInCallback.bind(this)}
-                     >注册</Text>
+                     >无法登陆？</Text>
+                     <Text style={styles.textRegForgStyle} onPress={this._signUpCallback.bind(this)}
+                     >新用户注册</Text>
                 </View>
             </View>
         );
@@ -147,11 +154,15 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 3
     },
     textRegForgView:{
-    marginTop:px2dp(20),
+     flex: 1,
+     padding: px2dp(20),
+     flexDirection: 'row',
+     justifyContent:'space-between',
+     alignItems: 'flex-end'
     },
     textRegForgStyle:{
 
-        color:'blue',
-        fontSize:15
+        color:theme.themeColor,
+         fontSize: px2dp(13),
     },
 });
