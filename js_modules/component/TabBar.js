@@ -17,7 +17,7 @@ import theme from '../config/theme';
 
 export default class TabBar extends Component{
     static defaultProps = {
-        selectedColor: 'rgb(22,131,251)',
+        selectedColor: 'rgb(245,3,3)',
         normalColor: '#a9a9a9'
     };
 
@@ -25,7 +25,7 @@ export default class TabBar extends Component{
         super(props);
         this.state = {
             selectedTab: 'home',
-            tabName: ['首页','发现','消息','我']
+            tabName: ['首页','发现','购物车','我']
         }
     }
 
@@ -41,21 +41,42 @@ export default class TabBar extends Component{
                     selected={this.state.selectedTab === 'home'}
                     titleStyle={{color: this.props.normalColor, fontSize: px2dp(10)}}
                     selectedTitleStyle={{color: this.props.selectedColor, fontSize: px2dp(10)}}
-                    renderIcon={() => <Image style={styles.tab} source={require('../image/ic_share_android.png')} />}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/hot.png')} />}
+                    renderIcon={() => <Image style={styles.tab} source={require('../image/tabs/home_normal.png')} />}
+                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/tabs/home_focus.png')} />}
                     onPress={() => this.setState({ selectedTab: 'home' })}>{<HomeFragment navigator={this.props.navigator}/>}
 
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[1]}
-                    selected={this.state.selectedTab === 'compass'}
+                    selected={this.state.selectedTab === 'search'}
                     titleStyle={{color: this.props.normalColor, fontSize: px2dp(10)}}
                     selectedTitleStyle={{color: this.props.selectedColor, fontSize: px2dp(10)}}
-                    renderIcon={() => <Image style={styles.tab} source={require('../image/ic_share_ios.png')} />}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/hot.png')} />}
-                    onPress={() => this.setState({ selectedTab: 'compass' })}>{<CompassFragment />}
+                    renderIcon={() => <Image style={styles.tab} source={require('../image/tabs/category_normal.png')} />}
+                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/tabs/category_focus.png')} />}
+                    onPress={() => this.setState({ selectedTab: 'search' })}>{<CompassFragment />}
                 </TabNavigator.Item>
+                <TabNavigator.Item
+                    tabStyle={styles.tabStyle}
+                    title={tabName[2]}
+                    selected={this.state.selectedTab === 'cart'}
+                    titleStyle={{color: this.props.normalColor, fontSize: px2dp(10)}}
+                    selectedTitleStyle={{color: this.props.selectedColor, fontSize: px2dp(10)}}
+                    renderIcon={() => <Image style={styles.tab} source={require('../image/tabs/cart_normal.png')} />}
+                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/tabs/cart_focus.png')} />}
+                    onPress={() => this.setState({ selectedTab: 'cart' })}>{<CompassFragment />}
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    tabStyle={styles.tabStyle}
+                    title={tabName[3]}
+                    selected={this.state.selectedTab === 'personal'}
+                    titleStyle={{color: this.props.normalColor, fontSize: px2dp(10)}}
+                    selectedTitleStyle={{color: this.props.selectedColor, fontSize: px2dp(10)}}
+                    renderIcon={() => <Image style={styles.tab} source={require('../image/tabs/personal_normal.png')} />}
+                    renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/tabs/personal_focus.png')} />}
+                    onPress={() => this.setState({ selectedTab: 'personal' })}>{<CompassFragment />}
+                </TabNavigator.Item>
+
 
             </TabNavigator>
         );
